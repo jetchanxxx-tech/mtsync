@@ -41,6 +41,12 @@ installer_output/
 dist/
 build/
 
+# 内部文档（不公开）
+*技术可行性报告-完整版*
+*Binance跟单*
+*.docx
+mt-copy-trading/
+
 # 用户本地配置
 config/gui_config.json
 
