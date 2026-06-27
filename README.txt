@@ -28,8 +28,7 @@ ARCHITECTURE:
   Supports 1:N: add more executor processes for additional followers
 
 SUPPORT:
-  Website: https://example.com
-  Email: support@example.com
+  Email: jetxxx@qq.com
 
 VERSION HISTORY:
   1.0.0 - Initial release
