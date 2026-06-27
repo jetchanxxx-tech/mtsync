@@ -1,0 +1,17 @@
+MT Copy Trading System - License Agreement
+===========================================
+
+Copyright (c) 2026 CopyTech. All rights reserved.
+
+This software is provided for commercial use under license.
+Unauthorized copying, modification, distribution, or use of this
+software is strictly prohibited without prior written permission.
+
+TERMS OF USE:
+  1. This software is licensed for use on a single computer per license.
+  2. The user assumes all risks associated with automated trading.
+  3. The publisher is not liable for any financial losses incurred
+     through the use of this software.
+  4. Redistribution or resale of this software is prohibited.
+
+For licensing inquiries, contact: support@example.com

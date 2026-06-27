@@ -1,0 +1,64 @@
+# ============================================================
+# MT 跟单同步系统 — 主配置文件
+# ============================================================
+
+# --- 跟单模式 ---
+mode: mt5  # mt5 | mt4 | hybrid
+
+# --- 主账户配置 ---
+lead_account:
+  name: "主账户A"
+  mt_version: "MT5"
+  # 如果同一台机器有多个 MT5 终端，指定终端路径
+  # terminal_path: "C:\\Program Files\\MetaTrader 5\\terminal64.exe"
+
+# --- 从账户列表 ---
+followers:
+  - name: "从账户B"
+    mt_version: "MT5"
+    copy_ratio: 1.0          # 跟单比例：1.0 = 100%，0.5 = 50%
+    min_lot: 0.01            # 最小跟单手数
+    max_lot: 100.0           # 最大跟单手数
+    copy_direction: "both"   # both | long_only | short_only
+    copy_sl_tp: true         # 是否同步止损止盈
+    copy_pending: true       # 是否同步挂单
+    symbol_mapping: {}       # 品种映射，如 {"EURUSD_": "EURUSD"}
+    # terminal_path: "C:\\Program Files\\MetaTrader 5\\terminal64.exe"
+
+# --- 信号检测 ---
+signal_detection:
+  poll_interval_ms: 300      # 轮询间隔（毫秒），MT5 建议 200-500ms
+  min_order_interval_ms: 500 # 最小下单间隔（毫秒），防止高频交易
+
+# --- 风控参数 ---
+risk_control:
+  max_total_position_pct: 80 # 最大总仓位占比（%）
+  max_drawdown_pct: 20       # 最大回撤百分比
+  stop_on_drawdown: true     # 回撤超限时是否停止跟单
+  max_slippage_pips: 10      # 最大允许滑点
+
+# --- 品种过滤 ---
+symbol_filter:
+  mode: "whitelist"          # whitelist | blacklist | all
+  whitelist:
+    - "EURUSD_"
+    - "GBPUSD_"
+    - "USDJPY_"
+    - "AUDUSD_"
+    - "XAUUSD_"
+  blacklist: []
+
+# --- 对账 ---
+reconciliation:
+  enabled: true
+  interval_seconds: 300      # 对账间隔（秒），默认 5 分钟
+  auto_fix: false            # 是否自动修复差异
+  max_deviation_pct: 1.0     # 最大允许偏差百分比
+
+# --- 日志 ---
+logging:
+  level: "INFO"              # DEBUG | INFO | WARNING | ERROR
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+  file: "logs/copy_trading.log"
+  max_size_mb: 100
+  backup_count: 10
